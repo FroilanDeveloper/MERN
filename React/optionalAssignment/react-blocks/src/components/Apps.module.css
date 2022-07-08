@@ -1,0 +1,49 @@
+.Appmain{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-size: contain;
+  margin: 20px;
+  padding: 25px;
+}
+
+
+.Header{
+  margin: 20px;
+  height: 100px;
+  background-color: #6aa84f;
+  border: 5px solid black;
+}
+
+.Navigation{
+  margin: 20px;
+  width: 10%;
+  height: 500px;
+  background-color: #6fa8dc;
+  border: 5px solid black;
+}
+
+.Main{
+  margin: 20px;
+  width: 50%;
+  height: 600px;
+  background-color: #e06666;
+  border: 5px solid black;
+}
+
+.SubContents{
+  margin: 20px;
+  width: 25%;
+  height: 150px;
+  background-color: #ffd966;
+  display: inline-block;
+  border: 5px solid black;
+}
+
+.Advertisement{
+  margin: 20px;
+  height: 250px;
+  width: 86%;
+  background-color: #b4a7d6;
+  display: inline-block;
+}
