@@ -9,7 +9,7 @@ const HookForms = (props) => {
 
   return(
     <div classname='container'>
-      <form classname='forms'>
+      <form>
         <h3 classname='answers'>
           <label>First Name: </label>
           <input type="text" onChange={ (e) => setFirstName(e.target.value)} value={firstname} />
