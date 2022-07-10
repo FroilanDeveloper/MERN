@@ -6,6 +6,7 @@ const MoreForms = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
+  
 
   return(
     <div classname='container'>
@@ -17,6 +18,7 @@ const MoreForms = (props) => {
           <label>First Name: </label>
           <input type="text" onChange={(e) => setFirstName(e.target.value)} value={firstname}  />
           {
+            (firstname.length === 0)? "":
             (firstname.length < 3)?
             <span style={{color: "blue"}}><h5>First Name should be at least 3 characters!</h5></span>:""
           }
@@ -25,6 +27,7 @@ const MoreForms = (props) => {
           <label>Last Name: </label>
           <input type="text" onChange={(e) => setLastName(e.target.value)} value={lastname}  />
           {
+            (lastname.length === 0)? "":
             (lastname.length < 3)?
             <span style={{color: "purple"}}><h5>Last Name should be at least 3 characters!</h5></span>:""
           }
@@ -33,14 +36,16 @@ const MoreForms = (props) => {
           <label>Email: </label>
           <input type="text" onChange={(e) => setEmail(e.target.value)} value={email}  />
           {
+            (email.length === 0)? "":
             (email.length < 10)?
-            <span style={{color: "orange"}}><h5>Email should be at least 2 characters!</h5></span>:""
+            <span style={{color: "orange"}}><h5>Email should be at least 10 characters!</h5></span>:""
           }
         </h3>
         <h3 classname='answers'>
           <label>Password: </label>
           <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
           {
+            (password.length === 0)? "":
             (password.length < 15)?
             <span style={{color: "red"}}><h5>Password should be at least 15 characters!</h5></span>:""
           }
@@ -50,7 +55,7 @@ const MoreForms = (props) => {
           <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmpassword}  />
           {
             (confirmpassword.length === 0)? "":
-            (confirmpassword.length != password)?
+            (confirmpassword.length == password)?
             <span style={{color: "skyblue"}}><h5>This must match password!</h5></span>:""
           }
         </h3>
