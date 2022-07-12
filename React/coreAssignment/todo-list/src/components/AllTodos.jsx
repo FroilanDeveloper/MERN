@@ -15,9 +15,9 @@ const AllTodos = () => {
   return (
     <div>
       <TodoForm addTask={addTask} />
-      {taskList.map((tasked, i) => (
+      {taskList.map((tasked, i) => 
         <TodoTask handleTaskDelete={() => handleTaskDelete(i)} task={tasked} />
-      ))}
+      )}
     </div>
   );
 };
