@@ -3,7 +3,9 @@ import TodoForm from "./TodoForm";
 import TodoTask from "./TodoTask";
 
 const AllTodos = () => {
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState([]); 
+  //      variable    function to set the State of the variable
+  // setting up the useState as an empty array
 
   const addTask = (task) => {
     setTaskList([...taskList, task]);

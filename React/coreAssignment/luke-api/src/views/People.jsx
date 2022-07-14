@@ -30,7 +30,6 @@ function People() {
         person&&
         <div>
         <h1> {person.name}</h1>
-        <img src="{person.image.medium}" />
         </div>
       }
     </div>
