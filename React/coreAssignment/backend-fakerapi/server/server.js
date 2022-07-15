@@ -14,6 +14,7 @@ class User{
   }
 }
 
+
 class Companies{
   constructor(){
     this._id = faker.datatype.uuid()
