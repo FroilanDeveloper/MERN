@@ -8,7 +8,7 @@
 
 // matrix[1][2] = 6
 const squareMatrix1 = [
-  [1, 2, 3],  // [r][c]
+  [1, 2, 3], // [r][c]
   [4, 5, 6],
   [9, 8, 9],
 ];
@@ -22,7 +22,7 @@ const expected1 = 2;
 */
 
 const squareMatrix2 = [
-  [1, 2, 3, 4, 5], 
+  [1, 2, 3, 4, 5],
   [1, 2, 3, 4, 5],
   [1, 2, 3, 4, 5],
   [1, 2, 3, 4, 5],
@@ -48,12 +48,12 @@ function diagonalDifference(sqrMatrix) {
   let num1 = 0;
   let num2 = 0;
   let j = sqrMatrix.length - 1;
-  for (let i = 0; i < sqrMatrix.length; i++){
+  for (let i = 0; i < sqrMatrix.length; i++) {
     num1 += sqrMatrix[i][i];
     num2 += sqrMatrix[i][j];
     j--;
   }
-  if(num1 > num2){
+  if (num1 > num2) {
     return num1 - num2;
   } else {
     return num2 - num1;
@@ -62,3 +62,28 @@ function diagonalDifference(sqrMatrix) {
 
 console.log("Absolute Difference: ", diagonalDifference(squareMatrix1));
 console.log("Absolute Difference: ", diagonalDifference(squareMatrix2));
+
+// solutions
+function diagonalDifference(sqrMatrix) {
+  let ltrSum = 0;
+  let rtlSum = 0;
+
+  for (let i = 0; i < sqrMatrix.length; i++) {
+    const row = sqrMatrix[i];
+    ltrSum += row[i];
+    rtlSum += row[row.length - i - 1];
+  }
+  return Math.abs(ltrSum - rtlSum);
+}
+
+/**
+ * - Time: O(n) linear.
+ * - Space: O(1) constant.
+ */
+const functionalDiagonalDifference = (sqrMatrix) =>
+  Math.abs(
+    sqrMatrix.reduce(
+      (diff, row, i) => diff + row[i] - row[row.length - i - 1],
+      0
+    )
+  );

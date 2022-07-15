@@ -11,9 +11,11 @@ import {useParams} from 'react-router-dom'
 
 
 
-function People() {
+const People = () => {
   const {id} = useParams()
   const [person, setPerson] = useState()
+
+
 
   useEffect(() => {
     axios.get(`https://swapi.dev/api/people/${id}`)
@@ -25,14 +27,25 @@ function People() {
 
 
   return (
-    <div>
-      {
-        person&&
-        <div>
-        <h1> {person.name}</h1>
+    <form>
+      <div>
+        {
+          person&&
+          <div>
+          <h1> {person.name}</h1>
+          </div>
+          
+        }
+      </div>
+      <div>
+        {
+          Height:{person.height}
+          Mass:{person.mass}
+          {person.hair_color}
+          {person.skin_color}
+        }
         </div>
-      }
-    </div>
+      </form>
   )
 }
 

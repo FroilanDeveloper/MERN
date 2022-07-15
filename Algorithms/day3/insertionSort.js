@@ -43,6 +43,53 @@ const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  * @param {Array<number>} nums
  * @returns {Array<number>} The given array after being sorted.
  */
-function insertionSort(nums) {
-  
+
+function insertionSort(inputnums) {
+  // make a copy of array
+  const nums = [...inputnums];
+  // set length equal to length of nums
+  let length = nums.length;
+  // start at index 1
+  for (let i = 1; i < length; i++) {
+    // create a current variable to hold current value of index i
+    let current = nums[i];
+    // set j equal to i-1 since i starts at 1st index
+    let j = i - 1;
+    // while current value is greater than the j index of nums (j is 1 less than i, so current and nums[j] are the index right next to each other.)
+    while (j >= 0 && current < nums[j]) {
+      // set nums[j+1] = current j index to swap values
+      nums[j + 1] = nums[j];
+      // decrement
+      j--;
+    }
+    //finish swap
+    nums[j + 1] = current;
+  }
+  // return sorted array
+  return nums;
 }
+
+// function insertionSort(nums) {
+  //   temp_arr = [nums[0]];
+  //   for(let i = 1; i < nums.length; i++){
+  //     if(nums[i] >= nums[i-1]){
+  //       temp_arr.push(nums[i])
+  //     }
+  //     else{
+  //       for(let j = 1; j < nums.length; j++){
+  //         temp = 0;
+  //         if(nums[j] < nums[j-1]){
+  //           temp = nums[j-1];
+  //           temp_arr[j-1] = nums[j];
+  //           temp_arr[j] = temp;
+  //         }
+  //         else{
+  //           continue;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return temp_arr;
+  // }
+
+console.log(insertionSort(numsRandomOrder));

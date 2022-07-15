@@ -23,7 +23,7 @@ const nums1 = [11, 8, 14, 3, 6, 2, 7];
 
 // original : [11, 8, 14, 3, 6, 2, 7]
 // if we pick 7 as the pivot
-// new.    :  [ 3, 6, 2, 7, 11, 8, 14] 
+// new.    :  [ 3, 6, 2, 7, 11, 8, 14]
 // return the pivot index :3
 
 /* 
@@ -58,37 +58,132 @@ const nums4 = [2, 1];
  */
 function partition(nums = [], left = 0, right = nums.length - 1) {
   const pivotValue = nums[right];
-  let pivotIndex = left; 
+  let pivotIndex = left;
   for (let i = left; i < right; i++) {
     if (nums[i] < pivotValue) {
-    [nums[i], nums[pivotIndex]] = [nums[pivotIndex], nums[i]];
-    pivotIndex++;
+      [nums[i], nums[pivotIndex]] = [nums[pivotIndex], nums[i]];
+      pivotIndex++;
     }
   }
-  [nums[pivotIndex], nums[right]] = [nums[right], nums[pivotIndex]] 
+  [nums[pivotIndex], nums[right]] = [nums[right], nums[pivotIndex]];
   return pivotIndex;
-};
-
+}
 
 // console.log(partition(nums1));
 // console.log(partition(nums2));
 // console.log(partition(nums3));
 // console.log(partition(nums4));
-function quickSort(nums){ 
-  var smaller = []; var larger = [];
-  if (nums.length <= 1)
-    return nums;
-  
-  for (var i = 1; i < nums.length; i++) { 
-    if (nums[i] < nums[0])
-      smaller.push(nums[i]); 
-    if (nums[i] >= nums[0]) 
-      larger.push(nums[i]); 
+
+function quickSort(nums) {
+  var smaller = [];
+  var larger = [];
+  if (nums.length <= 1) return nums;
+
+  for (var i = 1; i < nums.length; i++) {
+    if (nums[i] < nums[0]) smaller.push(nums[i]);
+    if (nums[i] >= nums[0]) larger.push(nums[i]);
   }
   return quickSort(smaller).concat(nums[0], quickSort(larger));
 }
-  // console.log(quickSort(nums1));
-  // console.log(quickSort(nums2));
-  // console.log(quickSort(nums3));
-  // console.log(quickSort(nums4));
+// console.log(quickSort(nums1));
+// console.log(quickSort(nums2));
+// console.log(quickSort(nums3));
+// console.log(quickSort(nums4));
 
+function partition(nums = [], left = 0, right = nums.length - 1) {
+  let pivot = nums[Math.floor((left + right) / 2)];
+  i = left;
+  j = right;
+
+  while (i <= j) {
+    while (nums[i] < pivot) {
+      i++;
+    }
+
+    while (nums[j] > pivot) {
+      j--;
+    }
+
+    if (i <= j) {
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      i++;
+      j--;
+    }
+  }
+  return i;
+}
+
+// [7, 3, 2, 6, 8, 10, 14, 11];
+//.             i
+//                      j
+
+// pivot: 10
+
+function quickSort(nums, left = 0, right = nums.length - 1) {
+  let index;
+  if (nums.length > 1) {
+    index = partition(nums, left, right); //index returned from partition
+    if (left < index - 1) {
+      //more elements on the left side of the pivot
+      quickSort(nums, left, index - 1);
+    }
+    if (index < right) {
+      //more elements on the right side of the pivot
+      quickSort(nums, index, right);
+    }
+  }
+  return nums;
+}
+// first call to quick sort
+// var result = quickSort(items, 0, items.length - 1);
+
+// const nums1 = [11, 3, 14, 10, 8, 6, 2, 7];
+// const nums2 = [11, 8, 14, 3, 3, 3, 6, 2, 7];
+// const nums3 = [1, 17, 12, 3, 9, 13, 21, 4, 27];
+
+console.log(quickSort(nums1));
+console.log(quickSort(nums2));
+console.log(quickSort(nums3));
+
+// solutions
+function quickSort(nums) {
+  var smallArray = [];
+  var largeArray = [];
+  //defining an empty array for smaller numbers than pivot and larger numbers than pivot
+  if (nums.length <= 1) return nums;
+  //edge case, is the length less than or equal to one? if this is true, return that array. :)
+
+  for (var i = 1; i < nums.length; i++) {
+    //forloop to go through all the numbers in the array
+    if (nums[i] < nums[0]) smallArray.push(nums[i]);
+    //if nums @ i is less than the pivot number (nums[0]) add to smallArray.
+    if (nums[i] >= nums[0]) largeArray.push(nums[i]);
+    //if nums @ i is greater than the pivot number (nums[0]) add to largeArray.
+  }
+  return quickSort(smallArray).concat(nums[0], quickSort(largeArray));
+  //now we recursively call quickSort to go through the small array's contents. this will then use .concat to add nums[0] after that is processed. Then we concatenate the function to run quickSort with the large Array. :'D
+}
+// 4th quickSort : [ 6, 7] : return [2].
+
+// third quickSort : [3, 6, 2, 7]
+// smallArray= [2]
+// largeArray = [ 6, 7]
+// pivot: nums[0] : 3
+// line 111   [2] concat with [3] quickSort(largeArray)
+
+// second quickSort(smallArray) : [8, 3 ,6 , 2, 7]
+// smallArray = [3, 6, 2, 7]
+// pivot: 8
+// line 111
+
+// first quickSort -- still running line 111
+// pivot: 0 , nums[0] : 11
+// i : 3, nums[i]: 3
+// smallArray =[8, 3 ,6 , 2, 7]
+// largeArray =[ 14]
+// nums=[11, 8, 14, 3, 6, 2, 7];
+
+console.log(quickSort(nums1));
+console.log(quickSort(nums2));
+console.log(quickSort(nums3));
+console.log(quickSort(nums4));

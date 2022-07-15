@@ -17,7 +17,6 @@ const numsA3 = [0, 1, 2, 2, 2, 7];
 const numsB3 = [10];
 const expected3 = [];
 
-
 /**
  * Efficiently combine the two sorted arrays into a new array that is the a
  * sorted set intersection.
@@ -37,24 +36,30 @@ function orderedIntersection(sortedA, sortedB) {
   let pA = 0;
   let pB = 0;
   while (pA < sortedA.length && pB < sortedB.length) {
-    if(sortedA[pA] > sortedB[pB]){//check if one is greater than other
+    if (sortedA[pA] > sortedB[pB]) {
+      //check if one is greater than other
       pB++;
       //increment something here
-    } else if(sortedA[pA] < sortedB[pB]){//check the other is greater
+    } else if (sortedA[pA] < sortedB[pB]) {
+      //check the other is greater
       pA++;
       //increment other one here
-    } else{ //they will be equal here
-        if(expected.length === 0 || expected[expected.length-1] !== sortedA[pA]){
-          expected.push(sortedA[pA]);
-        }
-        pA++;
-        pB++;
+    } else {
+      //they will be equal here
+      if (
+        expected.length === 0 ||
+        expected[expected.length - 1] !== sortedA[pA]
+      ) {
+        expected.push(sortedA[pA]);
+      }
+      pA++;
+      pB++;
       //check to ensure no dupes
       //push to expected
       //increment both pointers
     }
   }
-    return expected;
+  return expected;
 }
 
 console.log(orderedIntersection(numsA1, numsB1));
@@ -84,15 +89,65 @@ const expected5 = [1, 2, 2, 2, 6, 6, 7, 10, 15, 20];
  *    should be based on the max amount that dupe appears from one set,
  *    not the combined amount from both sets.
  */
-function orderedMultisetUnion(sortedA, sortedB) {
-}
+function orderedMultisetUnion(sortedA, sortedB) {}
 
-
-
-
-// bonus algo: 
+// bonus algo:
 
 /**
-  * Complete the intersection & union algo with 2 unsorted arrays 
-  * Try to complete the algo with O(n) time complexity
-*/
+ * Complete the intersection & union algo with 2 unsorted arrays
+ * Try to complete the algo with O(n) time complexity
+ */
+
+// Solution
+function orderedIntersection(nums1, nums2) {
+  let i = 0;
+  let j = 0;
+  let newArray = [];
+
+  while (i < nums1.length && j < nums2.length) {
+    if (nums1[i] === nums2[j]) {
+      if (newArray[newArray.length - 1] !== nums1[i]) {
+        newArray.push(nums1[i]);
+      }
+      i++;
+      j++;
+    } else if (nums1[i] < nums2[j]) {
+      i++;
+    } else if (nums1[i] > nums2[j]) {
+      j++;
+    }
+  }
+  return newArray;
+}
+
+function orderedUnion(nums1, nums2) {
+  let i = 0;
+  let j = 0;
+  let newArray = [];
+
+  while (i < nums1.length && j < nums2.length) {
+    if (nums1[i] === nums2[j]) {
+      newArray.push(nums1[i]);
+      i++;
+      j++;
+    } else if (nums1[i] < nums2[j]) {
+      newArray.push(nums1[i]);
+      i++;
+    } else if (nums1[i] > nums2[j]) {
+      newArray.push(nums2[j]);
+      j++;
+    }
+  }
+
+  while (i < nums1.length) {
+    newArray.push(nums1[i]);
+    i++;
+  }
+
+  while (j < nums2.length) {
+    newArray.push(nums2[j]);
+    j++;
+  }
+
+  return newArray;
+}

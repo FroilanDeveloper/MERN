@@ -46,5 +46,54 @@ function swap(arr, n, m) {
 console.log(bubbleSort(numsOrdered));
 console.log(bubbleSort(numsRandomOrder));
 
+function bubbleSort2(nums) { 
+  for (let x = 0; x < nums.length; x++) {
+    for (let y = 0; y < nums.length; y++) {
+        if (nums[y] > nums[y + 1]) {
+            let temp = nums[y];
+            nums[y] = nums[y + 1];
+            nums[y + 1] = temp;
+        }
+    }
+}
+
+return nums
+}
+
+// group 5
+function bubbleSort5(nums) {
+var temp = 0;
+while(!sortedArr(nums)){
+for(let i = 0; i < nums.length-1; i++){
+  if(nums[i] >= nums[i+1]){
+    temp = nums[i+1];
+    nums[i+1] = nums[i];
+    nums[i] = temp;
+  }
+}
+}
+return nums;
+}
+
+function sortedArr(numArr){
+for(var i = 0; i < numArr.length-1; i++){
+if(numArr[i]> numArr[i+1]) return false
+}
+return true;
+}
+
+
+// Group 6
+function bubbleSort6(nums, n = nums.length) {
+  if (n == 1) {
+    return nums;
+  }
+  for (var i = 0; i < n - 1; i++) {
+    if (nums[i] > nums[i + 1]) {
+      [nums[i], nums[i + 1]] = [nums[i + 1], nums[i]];
+    }
+  }
+  return bubbleSort6(nums, n - 1);
+}
 
 

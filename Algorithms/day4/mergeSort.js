@@ -90,3 +90,56 @@ function merge(left, right) {
 console.log(mergeSort(numsOrdered));
 console.log(mergeSort(numsRandomOrder));
 console.log(mergeSort(numsReversed));
+
+// Solution
+function merge(left, right) {
+  let resultArr = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+  while(leftIndex < left.length || rightIndex < right.length){
+    if(left[leftIndex]<right[rightIndex]){
+      resultArr.push(left[leftIndex]);
+      leftIndex += 1;
+    }
+    else if(left[leftIndex] > right[rightIndex]){
+      resultArr.push(right[rightIndex]);
+      rightIndex += 1;
+    }
+    else{
+      if(leftIndex < left.length){
+        resultArr.push(left[leftIndex]);
+        leftIndex += 1;
+      }
+      if(rightIndex < right.length){
+        resultArr.push(right[rightIndex]);
+        rightIndex += 1;
+      }
+    }
+    //console.log(`leftIndex=${leftIndex}, left.length=${left.length},rightIndex=${rightIndex},right.length=${right.length}, ${resultArr}`);
+  }
+
+  return resultArr;
+}
+
+// Solution
+function merge2(arrX, arrY) {
+  // make copies of input arrays
+  let x = [...arrX];
+  let y = [...arrY];
+  // create a new array to push values to as we go through the
+  let newArray = [];
+
+  while (x.length > 0 && y.length > 0) {
+    // choose the smallest value between the 0 index of both subarrays
+    if (x[0] < y[0]) {
+      newArray.push(x.shift())
+    }
+    else {
+      newArray.push(y.shift())
+    }
+  }
+
+  // if we didn't go through the whole array yet we need to add the leftover values to the end and return
+  // return newArray
+  return [ ...newArray, ...x, ...y ]
+}

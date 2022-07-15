@@ -1,7 +1,7 @@
 import './App.css';
-import Header from './views/Header'
-import People from './components/People'
-import Planets from './components/Planets'
+import Header from './components/Header'
+// import People from './components/People'
+// import Planets from './components/Planets'
 import {Routes, Route} from 'react-router-dom'
 import axios from 'axios'
 
