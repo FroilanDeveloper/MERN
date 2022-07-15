@@ -1,17 +1,20 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
   const [category, setCatergory] = useState("");
   const [id, setId] = useState("");
-
+  const navigate = useNavigate();
 
   const FetchSWAPI = (e) => {
-    e.prevent.default();
+    e.preventDefault();
+    navigate(`${category}/${id}`);
   };
 
   return (
-    <form>
+    <form onSubmit={FetchSWAPI}>
       <label>Search for: </label>
       <select
         name="category"

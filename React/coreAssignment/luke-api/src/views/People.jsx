@@ -22,7 +22,7 @@ const People = () => {
       .then(response =>{
         setPerson(response.data)
       })
-      .catch(err=> console.log(err))
+      .catch(err => console.log(err))
   },[id])
 
 
