@@ -25,36 +25,38 @@ const Product = () => {
   };
   //onChange to update title, price, description
   return (
-    <form  className="App" onSubmit={onSubmitHandler}>
-      <h3>
-        <label>Title</label>
-        <br />
-        <input
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
-      </h3>
-      <h3>
-        <label>Price</label>
-        <br />
-        <input
-          type="number"
-          onChange={(e) => setPrice(e.target.value)}
-          value={price}
-        />
-      </h3>
-      <h3>
-        <label>Description</label>
-        <br />
-        <input
-          type="text"
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-        />
-      </h3>
-      <input type="submit" />
-    </form>
+    <div  className="mx-auto w-25">
+      <form onSubmit={onSubmitHandler}>
+        <h3>
+          <label>Title</label>
+          <br />
+          <input
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          />
+        </h3>
+        <h3>
+          <label>Price</label>
+          <br />
+          <input
+            type="number"
+            onChange={(e) => setPrice(e.target.value)}
+            value={price}
+          />
+        </h3>
+        <h3>
+          <label>Description</label>
+          <br />
+          <input
+            type="text"
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+          />
+        </h3>
+        <input type="submit" />
+      </form>
+  </div>
   );
 };
 

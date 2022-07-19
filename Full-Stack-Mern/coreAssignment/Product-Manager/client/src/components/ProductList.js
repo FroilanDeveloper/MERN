@@ -4,13 +4,11 @@ import { Link } from "react-router-dom"
 
 const ProductList = (props) => {
   return (
-    <div className="App">
+    <div className="mx-auto w-25">
+      <h1>All Products</h1>
       {props.product.map((product, i) => (
         <h3 key={i}>
-          <h1>All Products</h1>
-          <div>
-            <Link to={`/products/${product._id}`}>{product.title}</Link>
-          </div>
+          <Link to={`/products/${product._id}`}>{product.title}</Link>
         </h3>
       ))}
     </div>

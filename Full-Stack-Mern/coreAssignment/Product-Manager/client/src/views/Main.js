@@ -5,23 +5,25 @@ import ProductList from "../components/ProductList";
 
 const Main = (props) => {
   const [product, setProduct] = useState([]);
-  const [loaded, setLoaded] = useState(false)
+  // const [loaded, setLoaded] = useState(false) // 
+
+  
   
   useEffect(() => {
     axios.get(`http://localhost:8000/api/products`)
       .then(res => {
         setProduct(res.data);
-        setLoaded(true);
       })
       .catch(err => console.error(err));
-  },[product]); 
+  },[]); // if we put product in the 2nd arguement it will run axios non-stop 
+  // refresh to make sure the list gets updated 
 
 
   return (
     <div className="App">
       <ProductForm />
       <hr />
-      {loaded && <ProductList product={product}/>}
+      <ProductList product={product}/>
     </div>
   );
 };
