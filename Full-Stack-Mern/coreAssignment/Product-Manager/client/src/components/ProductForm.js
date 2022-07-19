@@ -4,42 +4,55 @@ import axios from "axios";
 
 const Product = () => {
   //keep track of what is being typed via useState hook
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+
+
   //handler when the form is submitted
   const onSubmitHandler = (e) => {
     //prevent default behavior of the submit
     e.preventDefault();
     //make a post request to create a new person
     axios
-      .post("http://localhost:8000/api/people", {
-        firstName,
-        lastName,
+      .post("http://localhost:8000/api/products", {
+        title,
+        price,
+        description,
       })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
-  //onChange to update firstName and lastName
+  //onChange to update title, price, description
   return (
-    <form onSubmit={onSubmitHandler}>
-      <p>
-        <label>First Name</label>
+    <form  className="App" onSubmit={onSubmitHandler}>
+      <h3>
+        <label>Title</label>
         <br />
         <input
           type="text"
-          onChange={(e) => setFirstName(e.target.value)}
-          value={firstName}
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
-      </p>
-      <p>
-        <label>Last Name</label>
+      </h3>
+      <h3>
+        <label>Price</label>
+        <br />
+        <input
+          type="number"
+          onChange={(e) => setPrice(e.target.value)}
+          value={price}
+        />
+      </h3>
+      <h3>
+        <label>Description</label>
         <br />
         <input
           type="text"
-          onChange={(e) => setLastName(e.target.value)}
-          value={lastName}
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
         />
-      </p>
+      </h3>
       <input type="submit" />
     </form>
   );
