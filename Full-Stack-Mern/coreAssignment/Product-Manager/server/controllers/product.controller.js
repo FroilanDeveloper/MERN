@@ -33,12 +33,12 @@ module.exports.updateProduct = (req, res) => {
   const id = req.params.id
   const updateValue = req.body
   // update: criteria, updatedValue, options
-  Product.findOneandUpdate(
+  Product.findOneAndUpdate(
     { _id: id },
     updateValue,
     { new: true, runValidators: true }
   )
-    .then(updateProduct => res.json(this.updateProduct))
+    .then(updateProduct => res.json(updateProduct))
     .catch(err => res.json(err))
 }
 

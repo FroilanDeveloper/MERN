@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 
-const Product = () => {
+const Product = (props) => {
   //keep track of what is being typed via useState hook
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -20,12 +20,15 @@ const Product = () => {
         price,
         description,
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        props.refreshList()
+        console.log(res)
+      })
       .catch((err) => console.log(err));
   };
   //onChange to update title, price, description
   return (
-    <div  className="mx-auto w-25">
+    <div>
       <form onSubmit={onSubmitHandler}>
         <h3>
           <label>Title</label>
