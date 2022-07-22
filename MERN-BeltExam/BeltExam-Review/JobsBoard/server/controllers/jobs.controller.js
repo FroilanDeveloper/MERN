@@ -19,13 +19,18 @@ module.exports.oneJob = (req, res) => {
 // create
 module.exports.createJob = (req, res) => {
   Job.create(req.body)
-    .then(newJob=>res,json(newJob))
+    .then(newJob=>res.json(newJob))
     .catch(err=>res.status(400).json)
 }
 
 // update
 module.exports.updateJob = (req, res) => {
-
+  Job.findOneAndUpdate(
+    {_id : req.params.id},
+    req.body
+  )
+    .then()
+    .catch(err=>res.status(400).json)
 }
 
 // delete
