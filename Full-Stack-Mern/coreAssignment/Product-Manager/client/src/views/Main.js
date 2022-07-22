@@ -12,6 +12,21 @@ const Main = (props) => {
   };
 
 
+// 1. get id from params : useParmas
+// 2. display info on load : useEffect
+// 3. to change the info : useState
+// 4. grab info from backend : axios 
+// 5. navigate is use to go to route in the parenthesis. : useNavigate
+
+
+// checked : boolean
+// const [checked, setChecked] = useState(false)
+// onClick= { setChecked(!checked) }
+// <input type="checkbox" checked={checked}>
+// checked={checked}
+
+
+
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/products`)

@@ -48,7 +48,7 @@ const UpdateProduct = () => {
           />
         </div>
         <div>
-          <label> Description </label>
+          <label> Price $ </label>
           <input
             type="number"
             name="price"

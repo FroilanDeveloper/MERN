@@ -22,6 +22,9 @@ const Product = (props) => {
       })
       .then((res) => {
         props.refreshList()
+        setTitle("")
+        setPrice("")
+        setDescription("")
         console.log(res)
       })
       .catch((err) => console.log(err));

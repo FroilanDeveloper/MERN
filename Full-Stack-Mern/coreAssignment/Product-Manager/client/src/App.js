@@ -1,7 +1,7 @@
 import React from "react";
 import Main from "./views/Main";
 import Details from "./views/Details";
-import UpdateProduct from "./views/UpdateProduct"
+import UpdateProduct from "./views/UpdateProduct";
 import { Route, Routes, Link } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 
