@@ -8,8 +8,8 @@ const JobSchema = new mongoose.Schema({
   },
   company:{
     type: String,
-    required:[true, "Title is required"],
-    minlength:[3, "Title must be at least 3 characters"]
+    required:[true, "Company is required"],
+    minlength:[3, "Company must be at least 3 characters"]
   },
   salary:{
     type: Number,
